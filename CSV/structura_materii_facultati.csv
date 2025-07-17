@@ -1,0 +1,41 @@
+nume_curs,shortname,an,semestru,facultate
+Matematică 1,matematică_1_calc,1,1,CALC
+Programare,programare_calc,1,1,CALC
+Algoritmi,algoritmi_calc,1,1,CALC
+Arhitectura Calculatoarelor,arhitectura_calculatoarelor_calc,1,2,CALC
+Logică,logică_calc,1,2,CALC
+Matematică 2,matematică_2_calc,2,3,CALC
+Structuri de Date,structuri_de_date_calc,2,3,CALC
+Sisteme de Operare,sisteme_de_operare_calc,2,3,CALC
+Baze de Date,baze_de_date_calc,2,4,CALC
+Rețele,rețele_calc,2,4,CALC
+PCLP,pclp_calc,3,5,CALC
+Tehnici Web,tehnici_web_calc,3,5,CALC
+Programare Java,programare_java_calc,3,5,CALC
+Ingineria Programării,ingineria_programării_calc,3,6,CALC
+SO Avansate,so_avansate_calc,3,6,CALC
+Inteligență Artificială,inteligență_artificială_calc,4,7,CALC
+Machine Learning,machine_learning_calc,4,7,CALC
+Cloud,cloud_calc,4,7,CALC
+Proiect Licență,proiect_licență_calc,4,8,CALC
+Etică,etică_calc,4,8,CALC
+Matematică 1,matematică_1_com,1,1,COM
+Fizică,fizică_com,1,1,COM
+Programare,programare_com,1,1,COM
+Circuite,circuite_com,1,2,COM
+Electromagnetism,electromagnetism_com,1,2,COM
+Matematică 2,matematică_2_com,2,3,COM
+Semnale,semnale_com,2,3,COM
+Electronica Analogică,electronica_analogică_com,2,3,COM
+Baze de Date,baze_de_date_com,2,4,COM
+Rețele,rețele_com,2,4,COM
+Procesare Semnal,procesare_semnal_com,3,5,COM
+Telecomunicații,telecomunicații_com,3,5,COM
+Programare Java,programare_java_com,3,5,COM
+Mobile,mobile_com,3,6,COM
+Proiectare Sisteme,proiectare_sisteme_com,3,6,COM
+Antene,antene_com,4,7,COM
+Wireless,wireless_com,4,7,COM
+RF Design,rf_design_com,4,7,COM
+Proiect Licență,proiect_licență_com,4,8,COM
+Etică,etică_com,4,8,COM
