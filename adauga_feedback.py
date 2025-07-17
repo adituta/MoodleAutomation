@@ -1,14 +1,19 @@
+#pot face o interfata prin care sa pot adauga linkul si titlul formularului in functie de nevoia adminului
+#aceasta sursa poate avea ca parametru dinamic linkul si titlul formularului care sa fie transmise din
+#alta sursa .py
+
+#Tot ce este aici functioneaza doar daca am functia: core_course_create_modules
+#   In cazul meu, aceasta functie nu este disponibila, deci nu pot adauga linkul
+#
+#
+
 import csv
 import requests
 from config import MOODLE_URL, TOKEN
 
-CURSURI_CSV = "CSV\structura_materii_facultati.csv"
-FORMULAR_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSegqCGjCqSZ0UIpVJnlFuYbi7LmPlx1dKv3Fe8lkIM4xo9RCQ/viewform?usp=header"         #link-ul catre formularul de feedback
-FORMULAR_TITLE = "Formular Apreciere Disciplina"  #titlul formularului de feedback
-
-#pot face o interfata prin care sa pot adauga linkul si titlul formularului in functie de nevoia adminului
-#aceasta sursa poate avea ca parametru dinamic linkul si titlul formularului care sa fie transmise din
-#alta sursa .py
+CURSURI_CSV = "CSV/structura_materii_facultati.csv"
+FORMULAR_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSegqCGjCqSZ0UIpVJnlFuYbi7LmPlx1dKv3Fe8lkIM4xo9RCQ/viewform?usp=header"
+FORMULAR_TITLE = "Formular Apreciere Disciplina"
 
 def get_course_id_by_shortname(shortname):
     payload = {
@@ -38,17 +43,21 @@ def adauga_linkuri_feedback():
 
         payload = {
             'wstoken': TOKEN,
-            'wsfunction': 'mod_url_create_urls',
+            'wsfunction': 'core_course_create_modules',
             'moodlewsrestformat': 'json',
-            'urls[0][courseid]': course_id,
-            'urls[0][name]': FORMULAR_TITLE,
-            'urls[0][externalurl]': FORMULAR_LINK,
-            'urls[0][intro]': 'Completează formularul pentru a evalua serviciile cantinei.',
-            'urls[0][introformat]': 1,
+            'modules[0][courseid]': course_id,
+            'modules[0][section]': 0,  # "General" section
+            'modules[0][modulename]': 'url',
+            'modules[0][name]': FORMULAR_TITLE,
+            'modules[0][visible]': 1,
+            'modules[0][url][externalurl]': FORMULAR_LINK,
+            'modules[0][url][intro]': 'Completează formularul pentru a evalua serviciile cantinei.',
+            'modules[0][url][introformat]': 1
         }
 
         r = requests.post(MOODLE_URL, data=payload)
-        print(f"Link adăugat la cursul {shortname}: {r.status_code}")
+        print(f"Link adăugat la cursul {shortname}: {r.text}")
 
 if __name__ == "__main__":
     adauga_linkuri_feedback()
+
