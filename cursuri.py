@@ -1,8 +1,9 @@
 import csv
 import requests
 
-MOODLE_URL = "http://localhost/webservice/rest/server.php"
-TOKEN = "PUNE_AICI_TOKENUL_TAU"
+from config import MOODLE_URL, TOKEN
+
+
 FUNCTION = "core_course_create_courses"
 
 def creare_cursuri_din_csv(csv_file):

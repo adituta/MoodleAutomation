@@ -1,8 +1,7 @@
 import csv
 import requests
 
-MOODLE_URL = "http://localhost/webservice/rest/server.php"
-TOKEN = "PUNE_AICI_TOKENUL_TAU"
+from config import MOODLE_URL, TOKEN
 
 def get_course_id_by_shortname(shortname):
     payload = {
@@ -13,6 +12,8 @@ def get_course_id_by_shortname(shortname):
         'value': shortname
     }
     response = requests.post(MOODLE_URL, data=payload)
+
+
     data = response.json()
     if data['courses']:
         return data['courses'][0]['id']
@@ -75,3 +76,8 @@ def creare_si_enrolare_studenti(csv_file):
         print("Înrolare completă:", enrol_response.text)
 
 creare_si_enrolare_studenti('studenti.csv')
+
+
+
+
+
