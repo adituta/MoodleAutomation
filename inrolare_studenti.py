@@ -2,12 +2,12 @@ import csv
 import requests
 from config import MOODLE_URL, TOKEN
 
-# === Config ===
+# Configurare useri noi
 STUDENTI_CSV = 'CSV\studenti_grupe.csv'
 CURSURI_CSV = 'CSV\structura_materii_facultati.csv'
 DEFAULT_PASSWORD = 'Parola123!'
 
-# === Funcție pentru obținere ID curs după shortname ===
+# Funcție pentru obținere ID curs după shortname
 def get_course_id_by_shortname(shortname):
     payload = {
         'wstoken': TOKEN,
@@ -22,7 +22,7 @@ def get_course_id_by_shortname(shortname):
         return data['courses'][0]['id']
     return None
 
-# === Funcție pentru obținerea ID utilizator după username ===
+# Funcție pentru obținerea ID utilizator după username
 def get_userid_by_username(username):
     payload = {
         'wstoken': TOKEN,
@@ -37,7 +37,7 @@ def get_userid_by_username(username):
         return data['users'][0]['id']
     return None
 
-# === Funcție pentru creare utilizatori ===
+# Funcție pentru creare utilizatori
 def creeaza_utilizatori(studenti):
     payload = {
         'wstoken': TOKEN,
@@ -59,7 +59,7 @@ def creeaza_utilizatori(studenti):
         print("Unii utilizatori există deja sau a apărut o eroare.")
         return []
 
-# === Funcție pentru înrolare ===
+# Funcție pentru înrolare 
 def inroleaza_studenti():
     # 1. Citește cursuri
     with open(CURSURI_CSV, newline='', encoding='utf-8') as f:
@@ -113,6 +113,6 @@ def inroleaza_studenti():
     r = requests.post(MOODLE_URL, data=enrol_payload)
     print("Înrolare finalizată:", r.text)
 
-# === Rulează scriptul ===
+# Rulează scriptul 
 if __name__ == "__main__":
     inroleaza_studenti()

@@ -6,7 +6,7 @@ from config import MOODLE_URL, TOKEN
 DIRECTOR_FISIERE = "Materiale_Cursuri/Materiale_Programare"
 CURS_SHORTNAME = "programare_calc"
 
-# === Obține ID-ul cursului
+# --- Obține ID-ul cursului
 def get_course_id(shortname):
     payload = {
         'wstoken': TOKEN,
@@ -21,7 +21,7 @@ def get_course_id(shortname):
         return data['courses'][0]['id']
     return None
 
-# === Trimite fișierul codificat Base64 către plugin
+# --- Trimite fișierul codificat Base64 către plugin
 def incarca_fisier(courseid, filepath):
     with open(filepath, 'rb') as f:
         encoded = base64.b64encode(f.read()).decode('utf-8')
@@ -37,7 +37,7 @@ def incarca_fisier(courseid, filepath):
         response = requests.post(MOODLE_URL, data=payload)
         return response.json()
 
-# === MAIN
+# --- MAIN
 def incarca_materiale():
     course_id = get_course_id(CURS_SHORTNAME)
     if not course_id:

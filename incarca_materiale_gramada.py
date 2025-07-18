@@ -7,7 +7,7 @@ from config import MOODLE_URL, TOKEN
 # -- se ruleaza folosind urmatoarea scriere: python incarca_materiale_bulk.py asocieri_materiale.csv
 #unde asocieri csv este un fisier CSV cu coloanele: folder, curs_shortname
 
-# === Obține ID-ul cursului
+# --- Obține ID-ul cursului
 def get_course_id(shortname):
     payload = {
         'wstoken': TOKEN,
@@ -22,7 +22,7 @@ def get_course_id(shortname):
         return data['courses'][0]['id']
     return None
 
-# === Trimite fișierul codificat Base64 către pluginul local
+# --- Trimite fișierul codificat Base64 către pluginul local
 def incarca_fisier(courseid, filepath):
     with open(filepath, 'rb') as f:
         encoded = base64.b64encode(f.read()).decode('utf-8')
@@ -38,7 +38,7 @@ def incarca_fisier(courseid, filepath):
         response = requests.post(MOODLE_URL, data=payload)
         return response.json()
 
-# === Parcurge toate folderele definite în CSV
+# --- Parcurge toate folderele definite în CSV
 def incarca_din_csv(csv_path):
     with open(csv_path, newline='', encoding='utf-8') as f:
         reader = csv.DictReader(f)
@@ -60,7 +60,7 @@ def incarca_din_csv(csv_path):
                     rezultat = incarca_fisier(course_id, path)
                     print(f"   ↳ Rezultat: {rezultat}")
 
-# === Rulare
+# --- Rulare
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='Încarcă materiale în cursuri Moodle pe baza unui fișier CSV.')
